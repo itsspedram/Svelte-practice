@@ -14,6 +14,13 @@ let people = [
 <main>
 {#each people as person (person.id) }
   <h3>{person.name}</h3>
+  {#if person.beltColour ==="black" }
+    <strong>He IS A MASTER</strong>
+    {:else if person.beltColour=== "brown"}
+<strong>HE IS NOT A NOOB</strong>
+{:else}
+<small>we got a noob here</small>
+  {/if}
   <h4>{person.age} years old with {person.beltColour} belt</h4>
   <button on:click={()=>handleClick(person.id)}>delete </button>
   {:else}
