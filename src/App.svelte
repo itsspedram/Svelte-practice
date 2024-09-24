@@ -1,16 +1,17 @@
 <script>
 
-  let name = "esi"
-  let counter = 0
+ let firstName = ""
+ let lastName = ""
+$:fullName = `${firstName} ${lastName}`
+$:console.log(firstName);
 
-  const countUp = ()=>{
-    counter++;
-  }
 </script>
 
 <main>
-<h1>Hello my name is {name}</h1>
-<input type="text" bind:value={name}>
+<h3>{fullName}</h3>
+<input type="text" bind:value={firstName}>
+<input type="text" bind:value={lastName}>
+
 </main>
 
 <style>
