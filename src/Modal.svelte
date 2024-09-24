@@ -1,7 +1,6 @@
 <script>
 export let showModal = false
 export let isPromo = false
-export let message  ="default text" 
 </script>
 
 <main>
@@ -9,7 +8,8 @@ export let message  ="default text"
     {#if showModal}
         <div class="backdrop" class:promo={isPromo} on:click|self>
             <div class="modal">
-                <p>{message}</p>
+                <slot name="title"> </slot>
+                <slot> </slot>
             </div>
         </div>
     {/if}

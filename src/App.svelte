@@ -19,7 +19,15 @@ let people = [
 
 <main>
   <button on:click={handleClick}>show modal</button>
-  <Modal message="Im a props value" isPromo={true} {showModal} on:click={handleClick} />
+  <Modal  isPromo={true} {showModal} on:click={handleClick} >
+<h3 slot="title">add a new person</h3>
+<form>
+<input type="text" placeholder="First Name">
+<input type="text" placeholder="Last Name">
+<button>add peron</button>
+</form>
+
+  </Modal>
 {#each people as person (person.id) }
   <h3>{person.name}</h3>
   {#if person.beltColour ==="black" }
