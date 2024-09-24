@@ -1,17 +1,20 @@
 <script>
 
- let firstName = ""
- let lastName = ""
-$:fullName = `${firstName} ${lastName}`
-$:console.log(firstName);
+let people = [
+    { name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
+    { name: 'mario', beltColour: 'orange', age: 45, id: 2 },
+    { name: 'luigi', beltColour: 'brown', age: 35, id: 3 }
+  ];
 
 </script>
 
 <main>
-<h3>{fullName}</h3>
-<input type="text" bind:value={firstName}>
-<input type="text" bind:value={lastName}>
-
+{#each people as person (person.id) }
+  <h3>{person.name}</h3>
+  <h4>{person.age} years old with {person.beltColour} belt</h4>
+  {:else}
+  <h1>its empty :))</h1>
+{/each}
 </main>
 
 <style>
