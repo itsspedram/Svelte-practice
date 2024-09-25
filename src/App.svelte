@@ -1,33 +1,18 @@
 <script>
-
- let firstName = ""
- let lastName = ""
-$:fullName = `${firstName} ${lastName}`
-$:console.log(firstName);
-
+import Header from "./components/Header.svelte";
+import Footer from "./components/Footer.svelte";
 </script>
 
+<Header/>
 <main>
-<h3>{fullName}</h3>
-<input type="text" bind:value={firstName}>
-<input type="text" bind:value={lastName}>
-
+<h1>Hello Ninjas</h1>
 </main>
+<Footer/>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
+    	main{
+    width: 100%;
+    max-width: 960px;
+    margin: 40px auto;
   }
 </style>
