@@ -1,5 +1,6 @@
 <script>
 let fields= {question:"",answerA:"",answerB:""}
+import Button from "./Button.svelte";
 </script>
 
 <form on:submit|preventDefault={()=>console.log("oops")}>
@@ -15,7 +16,7 @@ let fields= {question:"",answerA:"",answerB:""}
         <label for="answer-b">Answer b</label>
         <input type="text" id="answer-b">
     </div>
-        <button>add poll</button>
+        <Button type='secondary' flat={true} inverse={true}>add poll</Button>
 </form>
 
 <style>
