@@ -7,7 +7,7 @@ import Footer from "./components/Footer.svelte";
 
   let items = ["Current polls", "Add New Poll"]
   let active ="Current polls"
-  let polls = [{question:"what is your name",answerA:"John",answerB:"Doe",voteA:0,voteB:0,id:1}]  
+  let polls = [{question:"what is your name",answerA:"what da",answerB:"helllll",voteA:12,voteB:55, id:1}]  
   const ChangeTab =(e)=>{
     active = e.detail
   }
