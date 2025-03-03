@@ -1,18 +1,23 @@
 <script>
     export let poll;
     import Card from "./Card.svelte";
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher();
 $: totalVotes = poll.votesA + poll.votesB;
+const handelVote = (answer,id)=>{
+dispatch("vote",{answer,id})
+}
 </script>
 
 <Card>
     <div class="poll">
         <h3>{ poll.question }</h3>
         <p>Total votes: { totalVotes }</p>
-        <div class="answer">
+        <div class="answer" on:click={()=>handelVote('a',poll.id)}>
           <div class="percent percent-a"></div>
           <span>{ poll.answerA } ({ poll.voteA } votes)</span>
         </div>
-        <div class="answer">
+        <div class="answer" on:click={()=>handelVote('b',poll.id)}>
           <div class="percent percent-b"></div>
           <span>{ poll.answerB } ({ poll.voteB } votes)</span>
         </div>
