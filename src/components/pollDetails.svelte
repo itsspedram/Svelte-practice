@@ -4,6 +4,8 @@
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher();
 $: totalVotes = poll.votesA + poll.votesB;
+$: percentA = Math.floor(100 / totalVotes * poll.votesA) || 0;
+$: percentB = Math.floor(100 / totalVotes * poll.votesB) || 0;
 const handelVote = (answer,id)=>{
 dispatch("vote",{answer,id})
 }
@@ -14,12 +16,12 @@ dispatch("vote",{answer,id})
         <h3>{ poll.question }</h3>
         <p>Total votes: { totalVotes }</p>
         <div class="answer" on:click={()=>handelVote('a',poll.id)}>
-          <div class="percent percent-a"></div>
-          <span>{ poll.answerA } ({ poll.voteA } votes)</span>
+            <div class="percent percent-a" style="width: {percentA}%"></div>
+            <span>{ poll.answerA } ({ poll.voteA } votes)</span>
         </div>
         <div class="answer" on:click={()=>handelVote('b',poll.id)}>
-          <div class="percent percent-b"></div>
-          <span>{ poll.answerB } ({ poll.voteB } votes)</span>
+            <div class="percent percent-b" style="width: {percentB}%"></div>
+            <span>{ poll.answerB } ({ poll.voteB } votes)</span>
         </div>
       </div>
 </Card>
@@ -48,6 +50,18 @@ h3{
     display: inline-block;
     padding: 10px 20px;
   }
-
+  .percent{
+    height: 100%;
+    position: absolute;
+    box-sizing: border-box;
+  }
+  .percent-a{
+    background: rgba(217,27,66,0.2);
+    border-left: 4px solid #d91b42;
+  }
+  .percent-b{
+    background: rgba(69,196,150,0.2);
+    border-left: 4px solid #45c496;
+  }
 
 </style>
