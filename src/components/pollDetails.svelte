@@ -3,9 +3,9 @@
     import Card from "./Card.svelte";
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher();
-$: totalVotes = poll.votesA + poll.votesB;
-$: percentA = Math.floor(100 / totalVotes * poll.votesA) || 0;
-$: percentB = Math.floor(100 / totalVotes * poll.votesB) || 0;
+$: totalVotes = poll.voteA + poll.voteB;
+$: percentA = Math.floor(100 / totalVotes * poll.voteA) || 0;
+$: percentB = Math.floor(100 / totalVotes * poll.voteB) || 0;
 const handelVote = (answer,id)=>{
 dispatch("vote",{answer,id})
 }
