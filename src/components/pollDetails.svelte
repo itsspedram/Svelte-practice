@@ -3,9 +3,20 @@
     import Card from "./Card.svelte";
 import pollStore from "../store/store";
 import Button from "./Button.svelte";
+import { tweened } from "svelte/motion";
+
+
 $: totalVotes = poll.voteA + poll.voteB;
 $: percentA = Math.floor(100 / totalVotes * poll.voteA) || 0;
 $: percentB = Math.floor(100 / totalVotes * poll.voteB) || 0;
+
+const tweenedA =tweened(0)
+const tweenedB =tweened(0)
+
+$:tweenedA.set(percentA)
+$:tweenedB.set(percentB)
+
+
 const handelVote = (answer,id)=>{
     pollStore.update( polls =>{
 
@@ -33,11 +44,11 @@ const handelDelete = (id)=>{
         <h3>{ poll.question }</h3>
         <p>Total votes: { totalVotes }</p>
         <div class="answer" on:click={()=>handelVote('a',poll.id)}>
-            <div class="percent percent-a" style="width: {percentA}%"></div>
+            <div class="percent percent-a" style="width: {$tweenedA}%"></div>
             <span>{ poll.answerA } ({ poll.voteA } votes)</span>
         </div>
         <div class="answer" on:click={()=>handelVote('b',poll.id)}>
-            <div class="percent percent-b" style="width: {percentB}%"></div>
+            <div class="percent percent-b" style="width: {$tweenedB}%"></div>
             <span>{ poll.answerB } ({ poll.voteB } votes)</span>
         </div>
         <div class="delete">
