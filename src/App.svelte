@@ -7,7 +7,7 @@ import Footer from "./components/Footer.svelte";
 
   let items = ["Current polls", "Add New Poll"]
   let active ="Current polls"
-  let polls = [{question:"what is your name",answerA:"what da",answerB:"helllll",voteA:12,voteB:55, id:1}]  
+  let polls = []  
   const ChangeTab =(e)=>{
     active = e.detail
   }
@@ -34,7 +34,7 @@ import Footer from "./components/Footer.svelte";
 <main>
   <Tabs {active} {items} on:ChangeTab={ChangeTab}/>
   {#if active==="Current polls"}
-    <PollList {polls}  on:vote={handelVote}/>
+    <PollList  on:vote={handelVote}/>
     {:else if active==="Add New Poll"}
       <NewPollForm on:add={handelAdd}/>
     {/if}
