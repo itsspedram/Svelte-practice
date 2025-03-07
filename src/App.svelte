@@ -12,29 +12,16 @@ import Footer from "./components/Footer.svelte";
     active = e.detail
   }
   const handelAdd = (e)=>{
-    const poll= e.detail
-    polls = [poll,...polls]
     active = "Current polls"
   }
-  const handelVote =(e)=>{
-    const {answer,id} = e.detail
-    const copiedPolls = [...polls]
-    const poll = copiedPolls.find(p=>p.id===id)
-    if(answer==="a"){
-      poll.voteA++ 
-    }
-    if(answer==="b"){
-      poll.voteB++
-    }
-    polls = copiedPolls
-  }
+
 </script>
 
 <Header/>
 <main>
   <Tabs {active} {items} on:ChangeTab={ChangeTab}/>
   {#if active==="Current polls"}
-    <PollList  on:vote={handelVote}/>
+    <PollList/>
     {:else if active==="Add New Poll"}
       <NewPollForm on:add={handelAdd}/>
     {/if}
